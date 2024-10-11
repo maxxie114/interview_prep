@@ -39,7 +39,6 @@ public class Library {
 
     // Search for a user in the system by name
     public User searchUser(String name) {
-        // Iterate through users
         for (User user : users.values()) {
             if (user.getName().equals(name)) {
                 return user;
@@ -50,21 +49,16 @@ public class Library {
 
     // Search for a book in the system by title
     public Book searchBook(String title) {
-        // Iterate through books
         for (Book book : books.values()) {
-            // If book's title matches title
             if (book.getTitle().equals(title)) {
-                // Return book
                 return book;
             }
         }
-        // Return null
         return null;
     }
 
     // Search for a book in the system by ISBN
     public Book searchBookByIsbn(String isbn) {
-        // Return book with isbn
         return books.get(isbn);
     }
 }

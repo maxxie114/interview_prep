@@ -1,5 +1,3 @@
-package StackAndQueues;
-
 import java.util.*;
 
 // Solution for leetcode problem 225
@@ -36,10 +34,12 @@ public class MakeStackUsingTwoQueues {
     // Get the top element
     public int top() {
         if (q1.size() == 0) {
-            for (int i = 0; i < q2.size(); i++) {
-                int temp = q2.poll();
-                q1.add(temp);
+            while (!q2.isEmpty()) {
+                q1.add(q2.poll());
             }
+        }
+        if (q1.isEmpty()) {
+            throw new NoSuchElementException("Stack is empty");
         }
         return q1.peek();
     }
@@ -53,6 +53,7 @@ public class MakeStackUsingTwoQueues {
         // Test the stack push
         MakeStackUsingTwoQueues stack = new MakeStackUsingTwoQueues();
         stack.push(10);
+        stack.push(20);
         System.out.println(stack.pop());
         System.out.println(stack.top());
         System.out.println(stack.empty());

@@ -31,6 +31,11 @@ public class MakeStackUsingTwoQueues {
         return q1.poll();
     }
 
+    // check if stack is empty
+    public Boolean empty() {
+        return (q1.size() == 0 && q2.size() == 0);
+    }
+
     // Get the top element
     public int top() {
         if (q1.size() == 0) {
@@ -38,22 +43,17 @@ public class MakeStackUsingTwoQueues {
                 q1.add(q2.poll());
             }
         }
-        if (q1.isEmpty()) {
-            throw new NoSuchElementException("Stack is empty");
+        if (this.empty()) {
+           System.err.println("Stack is empty");
+           return -1;
         }
         return q1.peek();
-    }
-
-    // check if stack is empty
-    public Boolean empty() {
-        return (q1.size() == 0 && q2.size() == 0);
     }
 
     public static void main(String[] Args) {
         // Test the stack push
         MakeStackUsingTwoQueues stack = new MakeStackUsingTwoQueues();
         stack.push(10);
-        stack.push(20);
         System.out.println(stack.pop());
         System.out.println(stack.top());
         System.out.println(stack.empty());

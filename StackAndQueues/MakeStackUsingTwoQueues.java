@@ -54,6 +54,7 @@ public class MakeStackUsingTwoQueues {
         // Test the stack push
         MakeStackUsingTwoQueues stack = new MakeStackUsingTwoQueues();
         stack.push(10);
+        stack.push(20);
         System.out.println(stack.pop());
         System.out.println(stack.top());
         System.out.println(stack.empty());

@@ -16,12 +16,7 @@ class SpiralOrder {
         int right = matrix[0].length - 1;
         // Traverse the matrix
         while (top <= bottom && left <= right) {
-            // Edge cases: If there is only one row
-            if (matrix.length == 1) {
-                break;
-            } 
-
-            for (int i = 0; i < right + 1; i++) {
+            for (int i = left; i <= right; i++) {
                 result.add(matrix[top][i]);
             }
             top++;
@@ -31,25 +26,20 @@ class SpiralOrder {
             }
             right--;
 
-
-            for (int i = right; i >= left; i--) {
-                result.add(matrix[bottom][i]);
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    result.add(matrix[bottom][i]);
+                }
+                bottom--;   
             }
-            bottom--;
             
-
-            for (int i = bottom; i >= top+1; i--) {
-                result.add(matrix[i][left]);
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    result.add(matrix[i][left]);
+                }
+                left++;
             }
-            left++;
         }
-        // Check if the matrix has odd number of rows
-        if (top == bottom) {
-            // Deal with edge cases and missing one row
-            for (int i = left; i <= right; i++) {
-                result.add(matrix[top][i]);
-            }
-        } 
         return result;
     }
 

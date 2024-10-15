@@ -65,11 +65,6 @@ public class InfiniteStackAttack {
                 }
                 s1.push(a);
             } 
-            // if stack 2 is longer, move half of the elements to stack 1
-            else {
-                // If the length of the two stacks are equal or off by 1, push to stack 1
-                s1.push(a);
-            }
         }
     }
 

@@ -29,7 +29,6 @@ public class InfiniteStackAttack {
                 int amountToMove = (s1.size() - s2.size()) / 2;
                 int s1Size = s1.size();
                 for (int i = 0; i < (s1Size - amountToMove); i++) {
-                    System.out.println(s1.peek());
                     temp.push(s1.pop());
                 }
                 while (!s2.isEmpty()) {

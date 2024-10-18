@@ -15,8 +15,10 @@ class AsteroidCollision {
                 } else if (stack.peek() == Math.abs(asteroid)) {
                     stack.pop(); // Both asteroids are destroyed
                     asteroid = 0; // Current asteroid is destroyed
+                    break;
                 } else {
                     asteroid = 0; // Current asteroid is smaller, it gets destroyed
+                    break;
                 }
             }
             // Only push to stack if current asteroid hasn't been destroyed

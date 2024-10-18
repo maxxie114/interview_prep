@@ -5,24 +5,36 @@ class AsteroidCollision {
     public int[] asteroidCollision(int[] asteroids) {
         ArrayDeque<Integer> stack = new ArrayDeque<>();
         // Loop over the entire array
-        for (int asteroid : asteroids) {
-            // only loop when current asteroid is negative
-            while (!stack.isEmpty() && asteroid < 0 && stack.peek() > 0) {
-                if (stack.peek() < Math.abs(asteroid)) {
-                    // Current asteroid is bigger, continue to check if it can destroy other asteroids
-                    stack.pop();
-                    continue;
-                } else if (stack.peek() == Math.abs(asteroid)) {
-                    stack.pop(); // Both asteroids are destroyed
-                    asteroid = 0; // Current asteroid is destroyed
-                    break;
-                } else {
-                    asteroid = 0; // Current asteroid is smaller, it gets destroyed
-                    break;
+        for (int i = 0; i < asteroids.length; i++) {
+            // If the stack is empty, push the current asteroid to the stack
+            if (stack.isEmpty() || asteroids[i] > 0) {
+                stack.push(asteroids[i]);
+            } 
+            // If the current asteroid is negative, start a backtrack loop
+            else {
+                // Keep backtracking until the stack is empty or the current asteroid is positive
+                boolean destroyed = false;
+                while (!stack.isEmpty() && stack.peek() > 0) {
+                    // If the current asteroid is greater than the top of the stack, pop the top of the stack
+                    if (stack.peek() < Math.abs(asteroids[i])) {
+                        stack.pop();
+                    } 
+                    // If the current asteroid is equal to the top of the stack, both destroyed
+                    else if (stack.peek() == Math.abs(asteroids[i])) {
+                        stack.pop();
+                        destroyed = true;
+                        break;
+                    } else {
+                        // the asteroid is destroyed
+                        destroyed = true;
+                        break;
+                    }
+                }
+                // If the asteroid was not destroyed, push it to the stack
+                if (!destroyed) {
+                    stack.push(asteroids[i]);
                 }
             }
-            // Only push to stack if current asteroid hasn't been destroyed
-            if (asteroid != 0) stack.push(asteroid); 
         }
         // Convert the stack to an array
         int[] result = new int[stack.size()];

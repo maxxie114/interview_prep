@@ -1,7 +1,7 @@
 import java.util.*;
 
 // implementation for leetcode 128 solution 2
-public class LongestConsecutiveSequence {
+public class LongestConsecutiveSequence2 {
     public int longestConsecutive(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;

@@ -24,7 +24,7 @@ public class BasicCalculator {
                 }
                 index--;
                 currentResult += sign * num;
-
+                
             } else if (currentChar == '+') {
                 sign = 1;
             } else if (currentChar == '-') {

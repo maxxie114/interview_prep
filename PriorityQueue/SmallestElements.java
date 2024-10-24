@@ -1,6 +1,7 @@
 import java.util.*;
 
-class Leetcode378 {
+// Solution for leetcode 378: Kth Smallest Element in a Sorted Matrix
+class SmallestElements {
     public int kthSmallest(int[][] matrix, int k) {
         if (matrix == null || matrix.length == 0 || k > matrix.length * matrix[0].length) { 
             return Integer.MIN_VALUE;

@@ -24,11 +24,12 @@ public class KCloestPoint {
     }
 
     public static void main(String[] args) {
+        // test case 
         KCloestPoint solution = new KCloestPoint();
         int[][] points = {{1, 3}, {-2, 2}, {5, 8}, {0, 1}};
         int k = 2;
         int[][] closestPoints = solution.kClosest(points, k);
-        System.out.println(Arrays.deepToString(closestPoints)); // Output: [[-2, 2], [1, 3]]
+        System.out.println(Arrays.deepToString(closestPoints)); // [[-2, 2], [0, 1]]
     }
 }
 

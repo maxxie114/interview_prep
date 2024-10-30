@@ -1,6 +1,6 @@
 import java.util.*;
 
-// Given an array that is initially stored in one stack, sort it with another stack
+// Array Sort: Given an array that is initially stored in one stack, sort it with another stack
 public class StackSorting {
     public ArrayDeque<Integer> sort(ArrayDeque<Integer> input) {
         // Create a temp stack

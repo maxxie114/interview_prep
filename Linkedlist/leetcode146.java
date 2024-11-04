@@ -1,4 +1,4 @@
-package Linkedlinst;
+package Linkedlist;
 
 public class leetcode146 {
     // get: get the node, move to the front, and return the node, if I can't get that node, return -1

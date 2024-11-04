@@ -1,4 +1,4 @@
-package Linkedlinst;
+package Linkedlist;
 
 public class leetcode876 {
     if (head == null) {

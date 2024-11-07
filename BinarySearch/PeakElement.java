@@ -1,6 +1,7 @@
 import java.util.*;
 
 // Solution for leetcode 162: Find Peak Element
+// Leetcode solution: https://leetcode.com/problems/find-peak-element/submissions/1445514367
 public class PeakElement {
     public int findPeakElement(int[] nums) {
         int left = 0;

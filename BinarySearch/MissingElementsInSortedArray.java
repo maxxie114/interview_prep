@@ -3,6 +3,9 @@ import java.util.*;
 // Solution for leetcode 1060: Missing Element in Sorted Array
 // leetcode submission: https://leetcode.com/problems/missing-element-in-sorted-array/submissions/1448512563
 public class MissingElementsInSortedArray {
+    // In this problem find the smallest index i where the cumulative count of missing numbers is greater than or equal to `k`. 
+    // Find smallest larger than a number type of problem
+
     // Define a helper function that returns the total number of missing numbers
     // between the first element and the element at the index
     int totalMissingNumber(int[] nums, int index) {

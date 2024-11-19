@@ -2,7 +2,7 @@
 // leetcode submission: https://leetcode.com/problems/sort-an-array/submissions/1457116916
 public class SortingQuickSort {
     public int[] sortArray(int[] nums) {
-        // check if the input is valid
+        // corner case
         if (nums == null || nums.length < 2) {
             return nums;
         }

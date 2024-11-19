@@ -1,29 +1,33 @@
+import java.util.*;
+
+// solution for leetcode 912: merge sort
+// leetcode submission: https://leetcode.com/problems/sort-an-array/submissions/1457116916
 public class SortingMergeSort {
     public int[] sortArray(int[] nums) {
         // check if the input is valid
-        if (nums == null || nums.length == 0) {
+        if (nums == null || nums.length < 2) {
             return nums;
         }
-        int[] temp = new int[array.length];
+        int[] temp = new int[nums.length];
         mergeSort(nums, 0, nums.length - 1, temp);
         return nums;
     }
 
-    public void mergeSort(int[] nums, left, right) {
+    public void mergeSort(int[] nums, int left, int right, int[] temp) {
         // base case
-        if (left > right) {
+        if (left >= right) {
             return;
         }
 
         int mid = left + (right - left) / 2;
         mergeSort(nums, left, mid, temp);
         mergeSort(nums, mid+1, right, temp);
-        merge(nums, left, middle, right, temp);
+        merge(nums, left, mid, right, temp);
     } 
 
     public void merge(int[] nums, int left, int mid, int right, int[] temp) {
         // Copy everything from left to right to the temp array
-        for (int i = left; i < right; i++) {
+        for (int i = left; i <= right; i++) {
             temp[i] = nums[i];
         }
 
@@ -51,6 +55,8 @@ public class SortingMergeSort {
         // if there are anything from the left array that are not copied over
         while (i <= mid) {
             nums[k] = temp[i];
+            k++;
+            i++;
         }
 
         // Any items from the right array no longer need to be copied, since they would already be in place
@@ -58,7 +64,8 @@ public class SortingMergeSort {
 
     // Test the algorithm
     public static void main(String[] args) {
-        MergeSort sorter = new MergeSort();
+        // test case
+        SortingMergeSort sorter = new SortingMergeSort();
         int[] array = {38, 27, 43, 3, 9, 82, 10};
         
         System.out.println("Original array:");
@@ -67,7 +74,7 @@ public class SortingMergeSort {
         }
         System.out.println();
         
-        sorter.mergeSort(array);
+        sorter.sortArray(array);
         
         System.out.println("Sorted array:");
         for (int num : array) {

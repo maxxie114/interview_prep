@@ -1,6 +1,8 @@
 import java.util.*;
 
 // Solution for leetcode 148: quick sort
+// Leetcode submission: https://leetcode.com/problems/sort-list/submissions/1460164802
+// This submission passed 29/31 test cases, but failed on the last case due to time limit exceeded
 public class ListSortingQuickSort {
     public ListNode sortList(ListNode head) {
         return quickSort(head, null);

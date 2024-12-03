@@ -1,6 +1,7 @@
 import java.util.*;
 
 // solution for leetcode 26: Remove Duplicates from Sorted Array
+// leetcode submission: https://leetcode.com/problems/remove-duplicates-from-sorted-array/submissions/1469087734
 public class RemoveDuplicates {
     public int removeDuplicates(int[] nums) {
         // edge case

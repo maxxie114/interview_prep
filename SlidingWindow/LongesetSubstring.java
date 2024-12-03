@@ -1,7 +1,9 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class leetcode3 {
+// Solution for leetcode 3: Longest Substring Without Repeating Characters
+// Submission: https://leetcode.com/problems/longest-substring-without-repeating-characters/submissions/1468972813
+public class LongesetSubstring {
     public int lengthOfLongestSubstring(String s) {
         int left = 0;
         int right = 0;
@@ -25,4 +27,11 @@ public class leetcode3 {
         return max;
     }
 
+    public static void main(String[] args) {
+        // Test cases
+        LongesetSubstring l = new LongesetSubstring();
+        System.out.println(l.lengthOfLongestSubstring("abcabcbb")); // 3
+        System.out.println(l.lengthOfLongestSubstring("bbbbb")); // 1
+        System.out.println(l.lengthOfLongestSubstring("pwwkew")); // 3
+    }
 }

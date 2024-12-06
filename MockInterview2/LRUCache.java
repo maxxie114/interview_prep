@@ -1,41 +1,92 @@
 import java.util.*;
 
 // Solution for leetcode 146: LRU Cache
+// Submission: https://leetcode.com/problems/lru-cache/submissions/1471551857
 class LRUCache {
     int capacity;
     Node head;
     Node tail;
+    HashMap<Integer, Node> map;
     public LRUCache(int capacity) {
         this.head = new Node();
         this.tail = new Node();
         this.capacity = capacity;
         head.next = tail;
         tail.prev = head;
-        Hashmap<Integer, Node> map = new HashMap<>();
+        this.map = new HashMap<>();
     }
-    
+
     public int get(int key) {
-        if (map.get(key)) {
-            Node cur = map.get(key);
-            cur.next.next = cur.prev;
-            cur.prev.next = cur.next;
-            cur.next = head;
-            cur.prev = null;
-            return cur.value;
+        if (map.containsKey(key)) {
+            Node node = map.get(key);
+            moveToFirst(node);
+            return node.value;
         }
         return -1;
     }
     
     public void put(int key, int value) {
-        
+        // put the item in the front if it doesn't exist
+        if (!map.containsKey(key)) {
+            Node cur = new Node(key, value);
+            // Mannually insert the node into the linkedlist
+            cur.next = head.next;
+            cur.prev = head;
+            head.next = cur;
+            cur.next.prev = cur;
+
+            map.put(key, cur);
+        }
+        // if the key exist already, update value
+        else {
+            Node cur = map.get(key);
+            cur.value = value;
+            moveToFirst(cur);
+        }
+        // remove the one at the tail if it is over the capacity
+        if (map.size() > capacity) {
+            removeLast();
+        }    
     }
 
     public void moveToFirst(Node node) {
+        // move the node to the front
+        if (node.prev != null) {
+            node.prev.next = node.next;
+        }
 
+        if (node.next != null) {
+            node.next.prev = node.prev;
+        }
+        node.next = head.next;
+        node.prev = head;
+        head.next.prev = node;
+        head.next = node;
     }
 
-    public void removeLast(Node node) {
-        
+    public void removeLast() {
+        // remove the one at the tail
+        if (tail.prev != head) {
+            Node last = tail.prev;
+            last.prev.next = tail;
+            tail.prev = last.prev;
+            map.remove(last.key);
+        }
+    }
+
+    public static void main(String[] args) {
+        // test case
+        LRUCache lruCache = new LRUCache(2);
+
+        lruCache.put(1, 1);
+        lruCache.put(2, 2);
+        System.out.println(lruCache.get(1)); // returns 1
+        lruCache.put(3, 3); // evicts key 2
+        System.out.println(lruCache.get(5)); // returns -1 (not found)
+        lruCache.put(4, 4); // evicts key 1
+        System.out.println(lruCache.get(1)); // returns -1 (not found)
+        System.out.println(lruCache.get(3)); // returns 3
+        System.out.println(lruCache.get(4)); // returns 4
     }
 }
 

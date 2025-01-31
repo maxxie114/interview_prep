@@ -1,5 +1,5 @@
 // Solution for leetcode 207: Course Schedule
-// Solution: https://leetcode.com/problems/course-schedule/submissions/1520154152
+// Solution: https://leetcode.com/problems/course-schedule/submissions/1526812878
 import java.util.*;
 
 public class CourseSchedule {
@@ -13,22 +13,18 @@ public class CourseSchedule {
 
 
         
-  // initialize the adjlist with numCourses amount of empty lists
-        // for (int i = 0; i < numCourses; i++) {
-        //    adjList.add(new ArrayList<>());
-        // }
+        // initialize the adjlist with numCourses amount of empty lists
+        for (int i = 0; i < numCourses; i++) {
+            adjList.add(new ArrayList<>());
+        }
 
 
         // first add each course that depends on the current course to the adjlist, and then we increment indegree for each of the dependents courses
         for (int[] prerequisite : prerequisites) {
             int course = prerequisite[0];
             int prerequisiteCourse = prerequisite[1];
-            Arraylist<Integer> curList = adjList.get(prerequisiteCourse);
-            if (curList == null) {
-                adjList[prerequisiteCourse] = new ArrayList<>();
-            }
             adjList.get(prerequisiteCourse).add(course);
-            inDegree[course]++; // [0,1,2]
+            inDegree[course]++;
         }
 
 

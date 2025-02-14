@@ -24,11 +24,10 @@ public class NumbersOfIsland2 {
                 // It is a char array so we need to compare with '1' not 1
                 if (grid[row][col] == '1') {
                     numIsland++;
-                    bfs(grid, row, col, q); 
+                    bfs(grid, row, col, q);
                 }
             }
         }
-
         return numIsland;
     }
 

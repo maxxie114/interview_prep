@@ -1,4 +1,5 @@
 // Leetcode Submission: https://leetcode.com/problems/validate-binary-search-tree/submissions/1520522013
+
 public class ValidBST {
     public boolean isValidBST(TreeNode root) {
         // call the dfs function, and default the min and max value to null
